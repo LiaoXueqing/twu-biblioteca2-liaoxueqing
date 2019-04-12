@@ -9,13 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class BibliotecaAppTest {
-    BibliotecaApp app;
+
+    Library library;
+
     @Before
     public void setUp() throws Exception {
-        app =  new BibliotecaApp();
+        library = mock(Library.class);
+        when(library.getBooks()).thenReturn(new ArrayList<Book>(){
+            {
+                add(new Book("book1"));
+                add(new Book("book2"));
+                add(new Book("book3"));
+                add(new Book("book4"));
+            }
+        });
     }
 
     @Test
@@ -32,25 +43,9 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void showBooks() {
-        List<Book> books = new ArrayList<Book>(){
-            {
-                add(new Book("book1"));
-                add(new Book("book2"));
-                add(new Book("book3"));
-                add(new Book("book4"));
-            }
-        };
-
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-        PrintStream old = System.out;
-        System.setOut(new PrintStream(outContent));
-
-        app.showBooks(books);
-
-        assertThat(outContent.toString(), is("book1\nbook2\nbook3\nbook4\n"));
-
-        System.setOut(old);
+    public void booksLength() {
+        List<Book> b = library.getBooks();
+        assertThat(b.size(), is(4));
     }
+
 }
