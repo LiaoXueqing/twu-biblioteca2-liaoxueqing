@@ -8,6 +8,9 @@ public class BibliotecaApp {
 
     private static List<Book> books = new Library().getBooks();
     private static List<Book> libraryBooks;
+    private static List<Book> checkoutBooks;
+
+    User loginUser = null;
 
     public static void main(String[] args) {
         welcome();
@@ -48,10 +51,52 @@ public class BibliotecaApp {
             case 3:
                 returnBookProcess();
                 break;
+            case 4:
+                login();
+                break;
+            case 5:
+                viewCheckoutBooks(books);
+                break;
+            case 6:
+                viewPersonalInformation();
+                break;
             default:
                 System.out.println("Error choose");
 
         }
+    }
+
+    public void login() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input your name: ");
+        String name = sc.next();
+        System.out.print("Please input your password: ");
+        String password = sc.next();
+        Users users = new Users();
+        loginUser = users.login(name, password);
+        if(loginUser == null ) {
+            System.out.println("Name or password error!");
+        }
+    }
+    public void viewPersonalInformation() {
+        if(loginUser != null) {
+            loginUser.printUserInfo();
+        } else {
+            System.out.println("Please login in first!");
+        }
+
+    }
+
+    public void viewCheckoutBooks(List<Book> books) {
+        if(loginUser != null) {
+            checkoutBooks = books.stream().filter(item -> item.isCheckout()).collect(Collectors.toList());
+            for (Book book : checkoutBooks) {
+                showBook(book);
+            }
+        } else {
+            System.out.println("Please login in first!");
+        }
+
     }
 
     private void returnBookProcess() {
