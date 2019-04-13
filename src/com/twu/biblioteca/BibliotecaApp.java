@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class BibliotecaApp {
@@ -48,6 +49,8 @@ public class BibliotecaApp {
             case 1:
                 showBooks(books);
                 break;
+            case 2:
+                checkoutBookProcess();
 
             default:
                 System.out.println("Error choose");
@@ -55,12 +58,31 @@ public class BibliotecaApp {
         }
     }
 
-    public void checkoutBook(String name) {
+    private void checkoutBookProcess() {
+        System.out.print("Please input the book name what you want to checkout:");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.next();
+        boolean result = checkoutBook(name);
+        if(result) {
+            System.out.println("Thank you! Enjoy the book!");
+        } else {
+            System.out.println("Sorry, that book is not available!");
+        }
+
+    }
+
+    public boolean checkoutBook(String name) {
+        boolean result = false;
         for(Book book : books) {
-            if(book.getName() == name) {
-                book.setCheckout(true);
+            if(book.getName().equals(name)) {
+                if(book.isCheckout() == false ){
+                    book.setCheckout(true);
+                    result = true;
+                    break;
+                }
             }
         }
+        return result;
     }
 
     public void showBooks(List<Book> books) {
