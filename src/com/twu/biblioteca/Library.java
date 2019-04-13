@@ -10,10 +10,10 @@ public class Library {
     public Library() {
         this.books = new ArrayList<Book>(){
             {
-                add(new Book("book1", "sanmao", "1982"));
-                add(new Book("book2", "sanmao", "1982"));
-                add(new Book("book3", "sanmao", "1982"));
-                add(new Book("book4", "sanmao", "1982"));
+                add(new Book("book1", "sanmao", "1982", true));
+                add(new Book("book2", "xiaoyu", "1978", false));
+                add(new Book("book3", "jingyong", "1957", false));
+                add(new Book("book4", "doudou", "1982", false));
             }
         };
     }

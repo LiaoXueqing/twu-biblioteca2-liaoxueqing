@@ -3,11 +3,12 @@ package com.twu.biblioteca;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class BibliotecaApp {
 
-    private static List<Book> books;
+    private static List<Book> books = new Library().getBooks();
+    private static List<Book> libraryBooks;
     private final static Map<Integer, String> MemuOptions = new HashMap<Integer, String>(){
         {
             put(1, "List of books");
@@ -45,7 +46,6 @@ public class BibliotecaApp {
     public void doHandle(int result) {
         switch (result) {
             case 1:
-                books = new Library().getBooks();
                 showBooks(books);
                 break;
 
@@ -55,8 +55,17 @@ public class BibliotecaApp {
         }
     }
 
+    public void checkoutBook(String name) {
+        for(Book book : books) {
+            if(book.getName() == name) {
+                book.setCheckout(true);
+            }
+        }
+    }
+
     public void showBooks(List<Book> books) {
-        for (Book book : books) {
+        libraryBooks = books.stream().filter(item -> !item.isCheckout()).collect(Collectors.toList());
+        for (Book book : libraryBooks) {
             showBook(book);
         }
     }
