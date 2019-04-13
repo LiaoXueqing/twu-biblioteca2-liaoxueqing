@@ -6,9 +6,7 @@ import java.util.stream.Collectors;
 
 public class BibliotecaApp {
 
-    private static List<Book> books = new Library().getBooks();
-    private static List<Book> libraryBooks;
-    private static List<Book> checkoutBooks;
+    Library library = new Library();
 
     User loginUser = null;
 
@@ -43,7 +41,7 @@ public class BibliotecaApp {
     public void doHandle(int result) {
         switch (result) {
             case 1:
-                showBooks(books);
+                library.showBooks();
                 break;
             case 2:
                 checkoutBookProcess();
@@ -55,7 +53,7 @@ public class BibliotecaApp {
                 login();
                 break;
             case 5:
-                viewCheckoutBooks(books);
+                viewCheckoutBooks();
                 break;
             case 6:
                 viewPersonalInformation();
@@ -87,12 +85,9 @@ public class BibliotecaApp {
 
     }
 
-    public void viewCheckoutBooks(List<Book> books) {
+    public void viewCheckoutBooks() {
         if(loginUser != null) {
-            checkoutBooks = books.stream().filter(item -> item.isCheckout()).collect(Collectors.toList());
-            for (Book book : checkoutBooks) {
-                showBook(book);
-            }
+            library.printCheckoutBooks();
         } else {
             System.out.println("Please login in first!");
         }
@@ -103,7 +98,7 @@ public class BibliotecaApp {
         System.out.print("Please input the book name what you want to return: ");
         Scanner sc = new Scanner(System.in);
         String name = sc.next();
-        boolean result = returnBook(name);
+        boolean result = library.returnBook(name);
         if(result) {
             System.out.println("Thank you for returning the book!");
         } else {
@@ -115,50 +110,13 @@ public class BibliotecaApp {
         System.out.print("Please input the book name what you want to checkout: ");
         Scanner sc = new Scanner(System.in);
         String name = sc.next();
-        boolean result = checkoutBook(name);
+        boolean result = library.checkoutBook(name);
         if(result) {
             System.out.println("Thank you! Enjoy the book!");
         } else {
             System.out.println("Sorry, that book is not available!");
         }
 
-    }
-
-    public boolean returnBook(String name) {
-        boolean result = false;
-        for(Book book : books) {
-            if(book.getName().equals(name) && book.isCheckout() == false) {
-                showBook(book);
-                result = true;
-                break;
-
-            }
-        }
-        return result;
-    }
-
-    //checkout a book
-    public boolean checkoutBook(String name) {
-        boolean result = false;
-        for(Book book : books) {
-            if(book.getName().equals(name) && book.isCheckout() == false) {
-                book.setCheckout(true);
-                result = true;
-                break;
-            }
-        }
-        return result;
-    }
-    //view available books
-    public void showBooks(List<Book> books) {
-        libraryBooks = books.stream().filter(item -> !item.isCheckout()).collect(Collectors.toList());
-        for (Book book : libraryBooks) {
-            showBook(book);
-        }
-    }
-
-    public void showBook(Book book) {
-        System.out.println("Name:"+book.getName()+" Author:"+book.getAuthor()+" Year:"+book.getYear());
     }
 
     public static void welcome() {

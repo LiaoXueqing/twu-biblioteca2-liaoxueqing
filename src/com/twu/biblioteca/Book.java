@@ -23,6 +23,10 @@ public class Book {
         this.checkout = checkout;
     }
 
+    public void showBook() {
+        System.out.println("Name:" + name + " Author: " + author + " Year:" + year);
+    }
+
     public boolean isCheckout() {
         return checkout;
     }
