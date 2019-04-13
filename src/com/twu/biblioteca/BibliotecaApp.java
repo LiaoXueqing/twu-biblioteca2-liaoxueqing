@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -16,13 +17,33 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         welcome();
         BibliotecaApp app = new BibliotecaApp();
-        app.doHandle();
+        app.chooseMenu();
     }
 
-    public void doHandle() {
+    public void chooseMenu() {
         Menu menu = new Menu();
-        int handle = menu.chooseMenu();
-        switch (handle) {
+        boolean isExit = false;
+
+        do {
+            menu.printInfo();
+            int result = menu.getInput();
+            if(menu.checkResult(result)) {
+                if(result == 0){
+                    isExit = true;
+                } else {
+                    doHandle(result);
+                }
+
+            } else {
+                System.out.println("Please select a valid option!");
+            }
+
+        } while(!isExit);
+
+    }
+
+    public void doHandle(int result) {
+        switch (result) {
             case 1:
                 books = new Library().getBooks();
                 showBooks(books);

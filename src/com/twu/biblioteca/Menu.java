@@ -11,24 +11,13 @@ public class Menu {
         memuOptions = new HashMap<Integer, String>(){
             {
                 put(1, "List of books");
+                put(0, "Exit");
             }
         };
     }
 
-    public int chooseMenu() {
-
-        printInfo();
-        int option = getInput();
-        if(checkResult(option)) {
-            return option;
-        } else {
-            System.out.println("Please select a valid option!");
-            return 0;
-        }
-
-    }
-
     public void printInfo() {
+        System.out.println();
         System.out.println("************************************");
         System.out.println();
         System.out.println("------ Please choose the menu ------");
@@ -37,6 +26,7 @@ public class Menu {
         });
         System.out.println();
         System.out.println("************************************");
+        System.out.println();
     }
 
     public boolean checkResult(int option) {
