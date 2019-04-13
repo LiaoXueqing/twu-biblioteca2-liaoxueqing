@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     Library library = new Library();
+    MovieLibrary movieLibrary = new MovieLibrary();
 
     User loginUser = null;
 
@@ -56,9 +57,27 @@ public class BibliotecaApp {
             case 6:
                 viewPersonalInformation();
                 break;
+            case 7:
+                movieLibrary.showAvailableMovies();
+                break;
+            case 8:
+                checkoutMovieProcess();
+                break;
             default:
                 System.out.println("Error choose");
 
+        }
+    }
+
+    private void checkoutMovieProcess() {
+        System.out.print("Please input the movie name what you want to checkout: ");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.next();
+        boolean result = movieLibrary.checkoutMovie(name);
+        if(result) {
+            System.out.println("Thank you! Enjoy the movie!");
+        } else {
+            System.out.println("Sorry, that movie is not available!");
         }
     }
 
