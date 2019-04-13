@@ -21,6 +21,10 @@ public class Menu {
         };
     }
 
+    public Menu(Map<Integer, String> memuOptions) {
+        this.memuOptions = memuOptions;
+    }
+
     public void printInfo() {
         System.out.println();
         System.out.println("************************************");

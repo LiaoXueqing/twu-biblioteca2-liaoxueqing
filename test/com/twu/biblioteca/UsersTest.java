@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class UsersTest {
 
     private List<User> userList;
-    Users users;
+    private Users users;
 
     @Before
     public void setUp() throws Exception {
