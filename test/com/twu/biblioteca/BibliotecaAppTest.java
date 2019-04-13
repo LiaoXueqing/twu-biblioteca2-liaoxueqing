@@ -10,7 +10,8 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BibliotecaAppTest {
 
@@ -49,16 +50,6 @@ public class BibliotecaAppTest {
     public void booksLength() {
         List<Book> b = library.getBooks();
         assertThat(b.size(), is(4));
-    }
-
-    @Test
-    public void doHandle() {
-        //when(menu.chooseMenu()).thenReturn(1);
-
-        //app.doHandle();
-
-        //verify(app,times(1)).showBooks(anyList());
-
     }
 
 }

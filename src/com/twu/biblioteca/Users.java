@@ -17,6 +17,10 @@ public class Users {
         };
     }
 
+    public Users(List<User> users) {
+        this.users = users;
+    }
+
     public User login(String name, String password) {
         User loginUser = null;
         for (User user: users) {
