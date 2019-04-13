@@ -1,38 +1,14 @@
 package com.twu.biblioteca;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class BibliotecaAppTest {
-
-    Library library;
-    Menu menu;
-    BibliotecaApp app;
-
-    @Before
-    public void setUp() throws Exception {
-        library = mock(Library.class);
-        menu = mock(Menu.class);
-        when(library.getBooks()).thenReturn(new ArrayList<Book>(){
-            {
-                add(new Book("book1"));
-                add(new Book("book2"));
-                add(new Book("book3"));
-                add(new Book("book4"));
-            }
-        });
-    }
-
     @Test
     public void welcome() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -45,11 +21,4 @@ public class BibliotecaAppTest {
 
         System.setOut(old);
     }
-
-    @Test
-    public void booksLength() {
-        List<Book> b = library.getBooks();
-        assertThat(b.size(), is(4));
-    }
-
 }
