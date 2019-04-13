@@ -15,10 +15,13 @@ import static org.mockito.Mockito.*;
 public class BibliotecaAppTest {
 
     Library library;
+    Menu menu;
+    BibliotecaApp app;
 
     @Before
     public void setUp() throws Exception {
         library = mock(Library.class);
+        menu = mock(Menu.class);
         when(library.getBooks()).thenReturn(new ArrayList<Book>(){
             {
                 add(new Book("book1"));
@@ -46,6 +49,16 @@ public class BibliotecaAppTest {
     public void booksLength() {
         List<Book> b = library.getBooks();
         assertThat(b.size(), is(4));
+    }
+
+    @Test
+    public void doHandle() {
+        when(menu.chooseMenu()).thenReturn(1);
+
+        app.doHandle();
+
+        verify(app,times(1)).showBooks(anyList());
+
     }
 
 }

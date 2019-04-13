@@ -1,16 +1,37 @@
 package com.twu.biblioteca;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BibliotecaApp {
+
     private static List<Book> books;
+    private final static Map<Integer, String> MemuOptions = new HashMap<Integer, String>(){
+        {
+            put(1, "List of books");
+        }
+    };
 
     public static void main(String[] args) {
         welcome();
         BibliotecaApp app = new BibliotecaApp();
-        books = new Library().getBooks();
-        app.showBooks(books);
+        app.doHandle();
+    }
 
+    public void doHandle() {
+        Menu menu = new Menu();
+        int handle = menu.chooseMenu();
+        switch (handle) {
+            case 1:
+                books = new Library().getBooks();
+                showBooks(books);
+                break;
+
+            default:
+                System.out.println("Error choose");
+
+        }
     }
 
     public void showBooks(List<Book> books) {
