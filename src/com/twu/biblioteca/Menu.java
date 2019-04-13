@@ -16,6 +16,19 @@ public class Menu {
     }
 
     public int chooseMenu() {
+
+        printInfo();
+        int option = getInput();
+        if(checkResult(option)) {
+            return option;
+        } else {
+            System.out.println("Please select a valid option!");
+            return 0;
+        }
+
+    }
+
+    public void printInfo() {
         System.out.println("************************************");
         System.out.println();
         System.out.println("------ Please choose the menu ------");
@@ -24,15 +37,22 @@ public class Menu {
         });
         System.out.println();
         System.out.println("************************************");
-        Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
+    }
+
+    public boolean checkResult(int option) {
         if(memuOptions.keySet().contains(option)) {
             //choose right
-            return option;
+            return true;
         } else {
             //choose error
-            return 0;
+            return false;
         }
+    }
+
+    public int getInput() {
+        Scanner sc = new Scanner(System.in);
+        int option = sc.nextInt();
+        return option;
     }
 
     public Map<Integer, String> getMemuOptions() {
