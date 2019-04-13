@@ -19,6 +19,10 @@ public class Library {
         };
     }
 
+    public Library(List<Book> books) {
+        this.books = books;
+    }
+
     //view available books
     public void showBooks() {
         List<Book> libraryBooks = books.stream().filter(item -> !item.isCheckout()).collect(Collectors.toList());
