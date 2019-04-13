@@ -51,15 +51,30 @@ public class BibliotecaApp {
                 break;
             case 2:
                 checkoutBookProcess();
-
+                break;
+            case 3:
+                returnBookProcess();
+                break;
             default:
                 System.out.println("Error choose");
 
         }
     }
 
+    private void returnBookProcess() {
+        System.out.print("Please input the book name what you want to return: ");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.next();
+        boolean result = returnBook(name);
+        if(result) {
+            System.out.println("Thank you for returning the book!");
+        } else {
+            System.out.println("That is not a valid book to return!");
+        }
+    }
+
     private void checkoutBookProcess() {
-        System.out.print("Please input the book name what you want to checkout:");
+        System.out.print("Please input the book name what you want to checkout: ");
         Scanner sc = new Scanner(System.in);
         String name = sc.next();
         boolean result = checkoutBook(name);
@@ -71,15 +86,26 @@ public class BibliotecaApp {
 
     }
 
+    public boolean returnBook(String name) {
+        boolean result = false;
+        for(Book book : books) {
+            if(book.getName().equals(name) && book.isCheckout() == false) {
+                showBook(book);
+                result = true;
+                break;
+
+            }
+        }
+        return result;
+    }
+
     public boolean checkoutBook(String name) {
         boolean result = false;
         for(Book book : books) {
-            if(book.getName().equals(name)) {
-                if(book.isCheckout() == false ){
-                    book.setCheckout(true);
-                    result = true;
-                    break;
-                }
+            if(book.getName().equals(name) && book.isCheckout() == false) {
+                book.setCheckout(true);
+                result = true;
+                break;
             }
         }
         return result;

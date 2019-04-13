@@ -10,6 +10,7 @@ public class Menu {
     public Menu() {
         memuOptions = new HashMap<Integer, String>(){
             {
+                put(3, "Return book");
                 put(2, "Checkout book");
                 put(1, "List of books");
                 put(0, "Exit");
