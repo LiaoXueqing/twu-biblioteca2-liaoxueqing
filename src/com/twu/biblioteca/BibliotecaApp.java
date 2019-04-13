@@ -92,6 +92,7 @@ public class BibliotecaApp {
         return result;
     }
 
+    //checkout a book
     public boolean checkoutBook(String name) {
         boolean result = false;
         for(Book book : books) {
@@ -103,7 +104,7 @@ public class BibliotecaApp {
         }
         return result;
     }
-
+    //view available books
     public void showBooks(List<Book> books) {
         libraryBooks = books.stream().filter(item -> !item.isCheckout()).collect(Collectors.toList());
         for (Book book : libraryBooks) {
