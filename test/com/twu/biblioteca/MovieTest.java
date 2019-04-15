@@ -26,7 +26,7 @@ public class MovieTest {
         public void printMovieInfo() {
             Movie movie = new Movie("Spring","1992",false);
             movie.printMovieInfo();
-            assertThat(outContent.toString(), is("Name: Spring，Year: 1992\n"));
+            assertThat(outContent.toString(), is("Name: Spring, Year: 1992\n"));
         }
 
         @After
