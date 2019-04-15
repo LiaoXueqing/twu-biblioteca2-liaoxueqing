@@ -27,7 +27,7 @@ public class Menu {
         this.memuOptions = memuOptions;
     }
 
-    public void printInfo() {
+    public void printMenuOptions() {
         System.out.println();
         System.out.println("************************************");
         System.out.println();
@@ -40,7 +40,7 @@ public class Menu {
         System.out.println();
     }
 
-    public boolean checkResult(int option) {
+    public boolean checkInput(int option) {
         if(memuOptions.keySet().contains(option)) {
             //choose right
             return true;

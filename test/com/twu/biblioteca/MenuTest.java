@@ -28,13 +28,13 @@ public class MenuTest {
 
     @Test
     public void checkResultRight() {
-        boolean result = menu.checkResult(1);
+        boolean result = menu.checkInput(1);
         assertTrue(result);
     }
 
     @Test
     public void checkResultError() {
-        boolean result = menu.checkResult(9);
+        boolean result = menu.checkInput(9);
         assertFalse(result);
     }
 }

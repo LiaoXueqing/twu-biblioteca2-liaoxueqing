@@ -12,17 +12,17 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         welcome();
         BibliotecaApp app = new BibliotecaApp();
-        app.chooseMenu();
+        app.getNextOperation();
     }
 
-    public void chooseMenu() {
+    public void getNextOperation() {
         Menu menu = new Menu();
         boolean isExit = false;
 
         do {
-            menu.printInfo();
+            menu.printMenuOptions();
             int result = menu.getInput();
-            if(menu.checkResult(result)) {
+            if(menu.checkInput(result)) {
                 if(result == 0){
                     isExit = true;
                 } else {
