@@ -9,10 +9,10 @@ public class Users {
     public Users() {
         this.users = new ArrayList<User>(){
             {
-                add(new User("xiaoli", "pass", 11, "movie"));
-                add(new User("xiaowang", "pass", 12, "music"));
-                add(new User("xiaoqi", "pass", 21, "reading"));
-                add(new User("wuwu", "pass", 17, "song"));
+                add(new User("lxl-2018", "pass", 11, "movie"));
+                add(new User("xwx-2018", "pass", 12, "music"));
+                add(new User("xqq-2017", "pass", 21, "reading"));
+                add(new User("wwf-2018", "pass", 17, "song"));
             }
         };
     }
@@ -21,10 +21,10 @@ public class Users {
         this.users = users;
     }
 
-    public User login(String name, String password) {
+    public User login(String libraryNumber, String password) {
         User loginUser = null;
         for (User user: users) {
-            if(user.getName().equals(name) && user.getPassword().equals(password)) {
+            if(user.getLibraryNumber().equals(libraryNumber) && user.getPassword().equals(password)) {
                 loginUser = user;
                 break;
             }

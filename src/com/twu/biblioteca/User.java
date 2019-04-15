@@ -1,20 +1,20 @@
 package com.twu.biblioteca;
 
 public class User {
-    private String name;
+    private String libraryNumber;
     private String password;
     private int age;
     private String hobby;
 
-    public User(String name, String password, int age, String hobby) {
-        this.name = name;
+    public User(String libraryNumber, String password, int age, String hobby) {
+        this.libraryNumber = libraryNumber;
         this.age = age;
         this.password = password;
         this.hobby = hobby;
     }
 
     public void printUserInfo() {
-        System.out.println("name: " + name + " age: "+ age + " hobby: "+ hobby);
+        System.out.println("LibraryNumber: " + libraryNumber + " Age: "+ age + " Hobby: "+ hobby);
     }
 
     public int getAge() {
@@ -33,12 +33,12 @@ public class User {
         this.hobby = hobby;
     }
 
-    public String getName() {
-        return name;
+    public String getLibraryNumber() {
+        return libraryNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLibraryNumber(String libraryNumber) {
+        this.libraryNumber = libraryNumber;
     }
 
     public String getPassword() {

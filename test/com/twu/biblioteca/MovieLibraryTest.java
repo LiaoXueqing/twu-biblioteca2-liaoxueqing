@@ -50,7 +50,7 @@ public class MovieLibraryTest {
     @Test
     public void showAvailableMovies() {
         library.showAvailableMovies();
-        assertThat(outContent.toString(), is("Name: Duck，Year: 1978\nName: Happy New Year，Year: 1957\nName: Big Foot，Year: 1982\n"));
+        assertThat(outContent.toString(), is("Name: Duck, Year: 1978\nName: Happy New Year, Year: 1957\nName: Big Foot, Year: 1982\n"));
     }
 
     @After

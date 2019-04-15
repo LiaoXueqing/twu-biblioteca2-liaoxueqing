@@ -83,12 +83,12 @@ public class BibliotecaApp {
 
     public void login() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Please input your name: ");
-        String name = sc.next();
+        System.out.print("Please input your library number: ");
+        String libraryNumber = sc.next();
         System.out.print("Please input your password: ");
         String password = sc.next();
         Users users = new Users();
-        loginUser = users.login(name, password);
+        loginUser = users.login(libraryNumber, password);
         if(loginUser == null ) {
             System.out.println("Name or password error!");
         }

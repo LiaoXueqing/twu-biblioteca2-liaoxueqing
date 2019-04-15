@@ -26,7 +26,7 @@ public class UserTest {
     public void printUserInfo() {
         User user = new User("xiaoxiao","pass",11,"movie");
         user.printUserInfo();
-        assertThat(outContent.toString(), is("name: xiaoxiao age: 11 hobby: movie\n"));
+        assertThat(outContent.toString(), is("LibraryNumber: xiaoxiao Age: 11 Hobby: movie\n"));
 
     }
 
